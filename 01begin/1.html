@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--0:引入 vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!--1 做界面  V-->
+    <div  id = "app1">
+        <button @click = "minus"> - </button>
+        <span >{{n}}</span>
+        <button  @click = "add">  + </button>
+    </div>
+    
+</body>
+
+
+<script>
+    //2 定义M  数据
+    //var data = {n:12};
+
+    // 3 创建实例   VM
+    var vm = new Vue({
+        //
+        el:"#app1",
+        data : {n:12},    
+        methods:{
+            minus(){
+                this.n -- ;
+            },
+
+            add(){
+                this.n++;
+            }
+        }    
+
+    });
+
+</script>
+</html>
