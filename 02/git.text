@@ -4,7 +4,7 @@ git remote add origin https://github.com/watchping/vue-learning.git
 //git add Coming Soon
 vscode编辑源文件
 
-git commit -m "first commit"
+git commit -m "first commit" //
 
 
 git push -u origin master
