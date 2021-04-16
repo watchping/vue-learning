@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!--0:引入 vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!--界面视图-->
+    <div id="app">
+      <input type="text" v-model="a" />
+      <select v-model="op">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+      </select>
+      <input type="text" v-model="b" />
+      ={{result}}
+    </div>
+    <script>
+        "use strict";
+      //控制：界面 + 数据
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          a: 0, //第一个操作数
+          op: "+", //运算符
+          b: 0, //第二个操作数
+          result: "0", //结果显示
+        },
+
+        methods: {
+            
+          handle() {     
+            console.log(this.result);       
+            switch (this.op) {
+              case "+":
+                this.result = parseInt(this.a) + parseInt(this.b);
+                break;
+              case "-":
+                this.result = parseInt(this.a) - parseInt(this.b);
+                break;
+              case "*":
+                this.result =parseInt(this.a) * parseInt(this.b);
+                break;
+              case "/":
+                this.result = parseInt(this.a) / parseInt(this.b);
+                break;              
+            }            
+          },
+        },
+
+        watch: {
+          a() {
+              
+            this.handle();
+          },
+          b() {
+            this.handle();
+          },
+          op() {
+            this.handle();
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
