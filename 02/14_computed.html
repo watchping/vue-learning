@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!--0:引入 vue.js-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <!--界面-->
+    <div id="app">
+      <h3>总金额：{{total}}</h3>
+      <ul>
+        <li v-for="(huowu,i) of cart" :key="i">
+         {{i}}  |  {{huowu.pid}} |  {{huowu.pname}}  |  ￥{{huowu.price.toFixed(2)}} | {{huowu.count}} ————小计：{{(huowu.price * huowu.count).toFixed(2)}}
+        </li>
+      </ul>
+      <h3>总金额：{{total}}</h3>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        //界面
+        el: "#app",
+        //数据
+        data: {
+          cart: [
+            { pid: 1, pname: "华为", price: 4455, count: 2 },
+            { pid: 2, pname: "小米", price: 3455, count: 1 },
+            { pid: 3, pname: "OPPO", price: 3356, count: 3 },
+          ],
+        },
+
+        //方法
+        methods: {},
+        computed:{
+            total(){
+                var total = 0;
+                for(var item of this.cart){
+                    total +=item.count * item.price;
+                }
+                return  total ;
+            }
+        }
+      });
+    </script>
+  </body>
+</html>

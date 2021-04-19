@@ -22,7 +22,7 @@
       ={{result}}
     </div>
     <script>
-        "use strict";
+      "use strict";
       //控制：界面 + 数据
       var vm = new Vue({
         el: "#app",
@@ -30,40 +30,60 @@
           a: 0, //第一个操作数
           op: "+", //运算符
           b: 0, //第二个操作数
-          result: "0", //结果显示
+          //result: "0", //结果显示
         },
 
-        methods: {
-            
-          handle() {     
-            console.log(this.result);       
+        // methods: {
+
+        //   handle() {
+        //     console.log(this.result);
+        //     switch (this.op) {
+        //       case "+":
+        //         this.result = parseInt(this.a) + parseInt(this.b);
+        //         break;
+        //       case "-":
+        //         this.result = parseInt(this.a) - parseInt(this.b);
+        //         break;
+        //       case "*":
+        //         this.result =parseInt(this.a) * parseInt(this.b);
+        //         break;
+        //       case "/":
+        //         this.result = parseInt(this.a) / parseInt(this.b);
+        //         break;
+        //     }
+        //   },
+        // },
+
+        // watch: {
+
+        //   a() {
+
+        //     this.handle();
+        //   },
+        //   b() {
+        //     this.handle();
+        //   },
+        //   op() {
+        //     this.handle();
+        //   },
+        // },
+
+        computed: {
+          result() {
             switch (this.op) {
               case "+":
-                this.result = parseInt(this.a) + parseInt(this.b);
+                return parseInt(this.a) + parseInt(this.b);
                 break;
               case "-":
-                this.result = parseInt(this.a) - parseInt(this.b);
+                return parseInt(this.a) - parseInt(this.b);
                 break;
               case "*":
-                this.result =parseInt(this.a) * parseInt(this.b);
+                return parseInt(this.a) * parseInt(this.b);
                 break;
               case "/":
-                this.result = parseInt(this.a) / parseInt(this.b);
-                break;              
-            }            
-          },
-        },
-
-        watch: {
-          a() {
-              
-            this.handle();
-          },
-          b() {
-            this.handle();
-          },
-          op() {
-            this.handle();
+                return parseInt(this.a) / parseInt(this.b);
+                break;
+            }
           },
         },
       });
