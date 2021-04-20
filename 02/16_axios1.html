@@ -54,7 +54,10 @@
                 getIndexData(){
                     axios.get("/index").then((res=>{    //http://115.159.160.93:8080    +   /index
                         console.log(res.data.recommendedItems);
-                        this.recommendedItems = res.data.recommendedItems;
+                        //this.recommendedItems = res.data.recommendedItems;
+                        var {recommendedItems,topSaleItems} = res.data;
+                        this.recommendedItems = recommendedItems;
+                        this.topSaleItems = topSaleItems;
                     }))                    
                 },
                 getIndexData_topSaleItems(){
