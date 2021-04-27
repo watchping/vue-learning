@@ -57,6 +57,21 @@
                             this.isLogin = true;
                         }
                     })
+                },
+
+                async login2(){
+                    //this.isLogin=true;
+                    //判断用户 密码 是否合法用户 登录验证
+                    let uname =  this.uname;
+                    let upwd = this.upwd;                    
+                    let result  = await axios.post("/user/login",{uname,upwd});
+                    
+                    console.log("login2:");
+                    console.log(result.data);
+                    if(result.data.code==200){
+                        this.isLogin = true;
+                    }
+                   
                 }
     
             }
